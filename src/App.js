@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import About from './component/about/About';
+import Contact from './component/contact/Contact';
+import Home from './component/home/Home';
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/js/bootstrap.min.js"
+import {RouterProvider,createBrowserRouter} from 'react-router-dom'
+import Portfolio from './component/portfolio/Portfolio';
+import UserLayout from './layout/userLayout/UserLayout';
 
-function App() {
+export default function App() {
+  const greenColor = "#1abc9c"
+let routs=  createBrowserRouter([
+    {
+      path: '/', element: <UserLayout/>, children: [
+        { index: true, element: <Home greenColor={greenColor } /> },
+        {path:'about',element:<About greenColor={greenColor }/>},
+        {path:'portfolio',element:<Portfolio/>},
+        { path: 'contact', element: <Contact /> },
+        {path:'*',element:<p className='pt-5 mt-5 text-center text-danger fw-bold'>ايرور يا معلم</p>},
+      ]
+    }
+])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <RouterProvider router={routs}/>
+    </>
   );
 }
 
-export default App;

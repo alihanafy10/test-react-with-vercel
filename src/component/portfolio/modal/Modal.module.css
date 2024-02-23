@@ -1,0 +1,36 @@
+.overFlowHidden{
+  overflow: hidden;
+}
+.cPointer{
+  cursor: pointer;
+}
+.posZero{
+  left:0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.trans3{
+  transition: 0.3;
+}
+.parentLayer::before{
+  content: '\2b';
+  font-weight: 300;
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 120px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #29bc9fcf;
+  transition: 0.3s;
+  opacity: 0;
+}
+.parentLayer:hover::before{
+  opacity: 1;
+}
